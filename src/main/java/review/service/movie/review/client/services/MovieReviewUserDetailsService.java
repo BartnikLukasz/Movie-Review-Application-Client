@@ -10,6 +10,7 @@ import review.service.movie.review.client.util.UserRepository;
 import review.service.movie.review.client.models.MovieReviewUserDetails;
 import review.service.movie.review.client.models.User;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,10 @@ public class MovieReviewUserDetailsService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
 
         return new MovieReviewUserDetails(user.get());
+    }
+
+    public ArrayList<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
     public String signUpUser(User user){

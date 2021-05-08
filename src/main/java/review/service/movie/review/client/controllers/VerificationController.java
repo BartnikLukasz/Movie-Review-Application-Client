@@ -8,7 +8,7 @@ import review.service.movie.review.client.services.RegistrationService;
 
 
 @RestController
-@RequestMapping(path = "/")
+@RequestMapping(path = "/r")
 public class VerificationController {
 
     @Autowired
@@ -17,20 +17,6 @@ public class VerificationController {
     @Autowired
     private MovieReviewUserDetailsService userDetailsService;
 
-    @GetMapping("/home")
-    public String home(){
-        return ("<h1>Welcome</h1>");
-    }
-
-    @GetMapping("/user")
-    public String user(){
-        return ("<h1>Welcome user</h1>");
-    }
-
-    @GetMapping("/admin")
-    public String admin(){
-        return ("<h1>Welcome admin</h1>");
-    }
 
     @PostMapping("/register")
     public String register(@RequestBody RegistrationRequest request){
