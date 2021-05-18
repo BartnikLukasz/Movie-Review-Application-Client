@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 import review.service.movie.review.client.models.User;
 import review.service.movie.review.client.services.MovieReviewUserDetailsService;
 
@@ -19,8 +20,10 @@ public class ClientController {
     private MovieReviewUserDetailsService userDetailsService;
 
     @GetMapping("/home")
-    public String home(){
-        return ("<h1>Welcome</h1>");
+    public RedirectView localRedirect() {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("http://www.yahoo.com");
+        return redirectView;
     }
 
     @GetMapping("/users")

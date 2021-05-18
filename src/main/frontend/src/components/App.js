@@ -2,37 +2,31 @@ import logo from '../logo.svg';
 import '../css/app.css';
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import Header from './Header.js';
+import Home from './Home.js';
+import RegistrationForm from './RegistrationForm';
+import LoginForm from './LoginForm';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-const UserProfiles = () =>{
 
-  const [userProfiles, setUserProfiles] = useState([]);
-
-  const fetchUserProfiles = () => {
-    axios.get("http://localhost:8080/users").then(res => {
-      console.log(res);
-      setUserProfiles(res.data);
-    });
-  };
-
-  useEffect(() => {
-    fetchUserProfiles();
-  }, []);
-
-  return userProfiles.map((userProfile, index) => {
-    return (
-      <div key={index}>
-        <p>{userProfile.username}</p>
-        <p>{userProfile.id}</p>
-      </div>
-    )
-  });
-
-};
 
 function App() {
   return (
     <div className="App">
-      <UserProfiles />
+      <Header />
+      <BrowserRouter>
+        <Switch>
+          <Route path="/register">
+            <RegistrationForm />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

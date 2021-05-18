@@ -38,7 +38,7 @@ public class MovieReviewUserDetailsService implements UserDetailsService {
     public String signUpUser(User user){
         boolean exists = userRepository.findByUsername(user.getUsername()).isPresent();
         if(exists){
-            return "Username taken";
+            return "Username taken." + user.getUsername();
         }
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
